@@ -1,0 +1,47 @@
+[
+  {
+    "href": "https://youtube.com/",
+    "img": "./imagens/youtube.jpeg",
+    "alt": "YouTube"
+  },
+  {
+    "href": "https://www.twitch.tv/",
+    "img": "./imagens/twitch.png",
+    "alt": "Twitch"
+  },
+  {
+    "href": "https://kick.com/",
+    "img": "./imagens/kick.png",
+    "alt": "Kick"
+  },
+  {
+    "href": "https://www.instagram.com/",
+    "img": "./imagens/instagram.png",
+    "alt": "Instagram"
+  },
+  {
+    "href": "https://www.tiktok.com/",
+    "img": "./imagens/tiktok.png",
+    "alt": "TikTok"
+  },
+  {
+    "href": "https://www.pinterest.com/",
+    "img": "./imagens/pinterest.png",
+    "alt": "Pinterest"
+  },
+  {
+    "href": "https://www.netflix.com/",
+    "img": "./imagens/netflix.png",
+    "alt": "Netflix"
+  },
+  {
+    "href": "https://open.spotify.com/",
+    "img": "./imagens/spotify.png",
+    "alt": "Spotify"
+  },
+  {
+    "href": "https://www.capcut.com/",
+    "img": "./imagens/capcut.png",
+    "alt": "CapCut"
+  }
+]

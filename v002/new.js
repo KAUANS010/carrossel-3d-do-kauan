@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', async function () {
   try {
     // Carregar os dados dos arquivos JSON
     const links = await carregarDados('./links.json');
-    const linksRdms1 = await carregarDados('./linksRdms1.json');
-    const linksRdms2 = await carregarDados('./linksRdms2.json');
-    const linksRdms3 = await carregarDados('./linksRdms3.json');
+    const linksKns1 = await carregarDados('./linksKns1.json');
+    const linksKns2 = await carregarDados('./linksKns2.json');
+    const linksKns3 = await carregarDados('./linksKns3.json');
     
     // Criar as listas com os dados carregados
     criarListaLinks('lista-horizontal', links);
-    criarListaLinks('lista-rdms', linksRdms1);
-    criarListaLinks('lista-rdms-linha2', linksRdms2);
-    criarListaLinks('lista-rdms-linha3', linksRdms3);
+    criarListaLinks('lista-kns', linksKns1);
+    criarListaLinks('lista-kns-linha2', linksKns2);
+    criarListaLinks('lista-kns-linha3', linksKns3);
     
     console.log('Dados carregados com sucesso!');
   } catch (erro) {

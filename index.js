@@ -18,7 +18,7 @@ let itemsData = [];
 let itemsElements = []; // Guarda as tags HTML <a> para animá-las no loop
 let carouselMode = 'mouse';
 let searchTargetRotation = 0;
-let isPaused = false; // [NOVO] Controla se o giro pelo mouse está pausado
+let isPaused = false; // Controla se o giro pelo mouse está pausado
 
 async function initCarousel() {
     try {
@@ -31,7 +31,7 @@ async function initCarousel() {
 
         totalItems = itemsData.length;
 
-        // Profundidade da elipse (mantém o cálculo seguro anterior para o eixo Z)
+        // Profundidade da elipse
         const spacing = CONFIG.baseItemSize * CONFIG.spacingRatio;
         radiusZ = Math.round((CONFIG.baseItemSize / 2) / Math.tan(Math.PI / totalItems)) + spacing;
 
@@ -41,7 +41,7 @@ async function initCarousel() {
         root.style.setProperty('--translate-z', `${-radiusZ}px`);
         root.style.setProperty('--perspective', `${Math.max(1200, radiusZ * 3)}px`);
 
-        // Renderiza itens e preenche o Datalist (Filtro incremental)
+        // Renderiza itens e preenche o Datalist
         itemsData.forEach((item) => {
             // Criação do item 3D
             const anchor = document.createElement('a');
@@ -58,13 +58,12 @@ async function initCarousel() {
 
             anchor.appendChild(img);
             carousel.appendChild(anchor);
-            itemsElements.push(anchor); // Salva na memória para a animação
+            itemsElements.push(anchor);
 
             // Criação da opção no menu suspenso
             const option = document.createElement('option');
             option.value = item.alt;
             datalist.appendChild(option);
-
         });
 
         updateDimensions();
@@ -72,7 +71,7 @@ async function initCarousel() {
 
         setupMouseControl();
         setupSearchControl();
-        setupGlobalShortcuts(); // [NOVO] Ativa o atalho de teclado global
+        setupGlobalShortcuts();
         animateCarousel();
         document.getElementById("searchInput").focus();
     } catch (error) {
@@ -85,7 +84,6 @@ function updateDimensions() {
     radiusX = window.innerWidth * CONFIG.ellipseWidthFactor;
 }
 
-// [NOVO] Função auxiliar para focar no input e selecionar o texto
 function focusAndSelectSearch() {
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
@@ -96,7 +94,6 @@ function focusAndSelectSearch() {
 
 function setupMouseControl() {
     window.addEventListener('mousemove', (event) => {
-        // [MODIFICADO] Se estiver no modo de busca ou pausado, ignora o movimento do mouse
         if (carouselMode === 'search' || isPaused) return;
 
         const screenWidth = window.innerWidth;
@@ -114,27 +111,24 @@ function setupMouseControl() {
         if (carouselMode === 'mouse') targetSpeed = 0;
     });
 
-    // [NOVO] Detecta clique simples no fundo preto para pausar/retomar
     document.addEventListener('click', (event) => {
-        // Verifica se o clique NÃO foi em um item do carrossel e NÃO foi no cabeçalho de busca
         const clickedOnItem = event.target.closest('.carousel-item');
         const clickedOnHeader = event.target.closest('.search-header');
 
         if (!clickedOnItem && !clickedOnHeader) {
             isPaused = !isPaused;
             if (isPaused) {
-                targetSpeed = 0; // Para o giro imediatamente
+                targetSpeed = 0;
             }
         }
     });
 
-    // [NOVO] Detecta clique duplo no fundo preto para focar no input
     document.addEventListener('dblclick', (event) => {
         const clickedOnItem = event.target.closest('.carousel-item');
         const clickedOnHeader = event.target.closest('.search-header');
 
         if (!clickedOnItem && !clickedOnHeader) {
-            isPaused = false; // Retoma o carrossel ao ir para a busca, se desejar
+            isPaused = false;
             focusAndSelectSearch();
         }
     });
@@ -143,31 +137,27 @@ function setupMouseControl() {
 function setupSearchControl() {
     const searchInput = document.getElementById('searchInput');
 
-    // Seleciona texto quando ganha foco
     searchInput.addEventListener('focus', (e) => {
         e.target.select();
     });
 
-    // Escuta o evento de digitação
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase().trim();
 
         if (query === '') {
             carouselMode = 'mouse';
-            searchInput.style.borderColor = ''; // Resetar cor
+            searchInput.style.borderColor = '';
             return;
         }
 
-        // Busca mais flexível - verifica se o termo está CONTIDO no alt
         const matchIndex = itemsData.findIndex(item =>
-            item.alt.toLowerCase().includes(query) || // Busca por parte do texto
-            item.alt.toLowerCase().split(' ').some(word => word.startsWith(query)) // Busca por palavra que começa com
+            item.alt.toLowerCase().includes(query) ||
+            item.alt.toLowerCase().split(' ').some(word => word.startsWith(query))
         );
 
         if (matchIndex !== -1) {
-            // Item encontrado!
             carouselMode = 'search';
-            isPaused = false; // [NOVO] Despausa automaticamente para mover até o item encontrado
+            isPaused = false;
             const itemAngle = matchIndex * (360 / totalItems);
             const target = -itemAngle;
 
@@ -177,24 +167,20 @@ function setupSearchControl() {
 
             searchTargetRotation = currentRotation + diff;
 
-            // Feedback visual: borda verde quando encontra
             searchInput.style.borderColor = '#4CAF50';
             searchInput.style.borderWidth = '2px';
             searchInput.style.borderStyle = 'solid';
         } else {
-            // Não encontrou - feedback visual
             searchInput.style.borderColor = '#ff4444';
             searchInput.style.borderWidth = '2px';
             searchInput.style.borderStyle = 'solid';
         }
     });
 
-    // Escuta o ENTER para abrir a aba
     searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             const query = e.target.value.toLowerCase().trim();
 
-            // Busca mais flexível também para o ENTER
             const matchItem = itemsData.find(item =>
                 item.alt.toLowerCase().includes(query) ||
                 item.alt.toLowerCase().split(' ').some(word => word.startsWith(query))
@@ -202,20 +188,14 @@ function setupSearchControl() {
 
             if (matchItem) {
                 window.open(matchItem.href, '_blank');
-                // Limpar busca após abrir
                 searchInput.value = '';
                 searchInput.style.borderColor = '';
                 carouselMode = 'mouse';
             } else {
-                // Feedback visual
                 searchInput.style.borderColor = '#ff4444';
                 searchInput.style.borderWidth = '2px';
                 searchInput.style.borderStyle = 'solid';
 
-                // Mostrar erro
-                showErrorNotification(`"${e.target.value}" não encontrado`);
-
-                // Resetar após 3 segundos
                 setTimeout(() => {
                     searchInput.style.borderColor = '';
                 }, 3000);
@@ -223,7 +203,6 @@ function setupSearchControl() {
         }
     });
 
-    // Resetar estilo quando perde o foco
     searchInput.addEventListener('blur', () => {
         if (searchInput.value === '') {
             searchInput.style.borderColor = '';
@@ -231,21 +210,18 @@ function setupSearchControl() {
     });
 }
 
-// [NOVO] Escuta o atalho Ctrl + Enter em qualquer lugar da página
 function setupGlobalShortcuts() {
     window.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key === 'Enter') {
-            e.preventDefault(); // Evita comportamentos padrões indesejados
-            isPaused = false;   // Retoma o carrossel se estiver pausado
+            e.preventDefault();
+            isPaused = false;
             focusAndSelectSearch();
         }
     });
 }
 
-// O Loop de Animação - Calcula a elipse frame a frame
 function animateCarousel() {
     if (carouselMode === 'mouse') {
-        // [MODIFICADO] Só rotaciona se não estiver pausado
         if (!isPaused) {
             currentRotation += targetSpeed;
         }
@@ -253,17 +229,11 @@ function animateCarousel() {
         currentRotation += (searchTargetRotation - currentRotation) * CONFIG.easeFactor;
     }
 
-    // Posiciona e rotaciona cada item individualmente formando a elipse
     itemsElements.forEach((el, index) => {
-        // Ângulo individual
         const baseAngle = index * (360 / totalItems);
         const currentItemAngle = baseAngle + currentRotation;
-
-        // Conversão para radianos (necessário para as funções Math.sin e Math.cos)
         const rad = currentItemAngle * (Math.PI / 180);
 
-        // O 'Pulo do gato' matemático: 
-        // Largura usa o raio X flexível (baseado na tela). Profundidade usa o raio Z (estático).
         const x = radiusX * Math.sin(rad);
         const z = radiusZ * Math.cos(rad);
 

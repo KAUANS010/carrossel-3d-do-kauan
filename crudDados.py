@@ -11,7 +11,7 @@ PASTA_IMAGENS = './imagens'
 class AppCRUD:
     def __init__(self, root):
         self.root = root
-        self.root.title("Gerenciador de Carrossel 3D")
+        self.root.title("Gerenciador de Carrossel 3D - Kauan")
         self.root.geometry("950x650")
         self.root.minsize(850, 550)
         
@@ -120,9 +120,6 @@ class AppCRUD:
         ttk.Button(frame_botoes, text="Salvar Dados", command=self.salvar_item).pack(side=tk.LEFT, padx=5)
         ttk.Button(frame_botoes, text="Excluir", command=self.excluir_item).pack(side=tk.LEFT, padx=5)
 
-    # ==========================================
-    # LÓGICA DE ORDENAÇÃO (MOVER CIMA / BAIXO)
-    # ==========================================
     def mover_cima(self):
         if self.indice_selecionado is None:
             messagebox.showwarning("Aviso", "Selecione um item na tabela para mover.")
@@ -130,17 +127,14 @@ class AppCRUD:
             
         idx = self.indice_selecionado
         if idx > 0:
-            # Troca a posição na lista principal
             self.dados[idx], self.dados[idx-1] = self.dados[idx-1], self.dados[idx]
             self.salvar_dados()
             
-            # Limpa o filtro de busca se houver, para não bugar a visualização
             if self.var_busca.get():
                 self.var_busca.set("")
             else:
                 self.atualizar_tabela()
             
-            # Refoca no item que foi movido
             novo_idx = idx - 1
             self.tree.selection_set(novo_idx)
             self.tree.focus(novo_idx)
@@ -153,26 +147,19 @@ class AppCRUD:
             
         idx = self.indice_selecionado
         if idx < len(self.dados) - 1:
-            # Troca a posição na lista principal
             self.dados[idx], self.dados[idx+1] = self.dados[idx+1], self.dados[idx]
             self.salvar_dados()
             
-            # Limpa o filtro de busca se houver
             if self.var_busca.get():
                 self.var_busca.set("")
             else:
                 self.atualizar_tabela()
             
-            # Refoca no item que foi movido
             novo_idx = idx + 1
             self.tree.selection_set(novo_idx)
             self.tree.focus(novo_idx)
             self.tree.see(novo_idx)
 
-
-    # ==========================================
-    # LÓGICA DE TRATAMENTO DE IMAGENS E CRUD
-    # ==========================================
     def gerar_caminho_imagem(self):
         alt_text = self.entry_alt.get().strip()
         if not alt_text:

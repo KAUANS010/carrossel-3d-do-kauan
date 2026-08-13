@@ -2,12 +2,12 @@
   {
     "href": "https://calendar.google.com/",
     "img": "./imagens/agenda.png",
-    "alt": "Google Calendar"
+    "alt": "Google Agenda"
   },
   {
     "href": "https://web.whatsapp.com/",
     "img": "./imagens/whatsapp.png",
-    "alt": "Whatsapp"
+    "alt": "WhatsApp"
   },
   {
     "href": "https://mail.google.com/",
@@ -17,66 +17,46 @@
   {
     "href": "https://drive.google.com/",
     "img": "./imagens/drive.webp",
-    "alt": "Drive"
+    "alt": "Google Drive"
   },
   {
     "href": "https://classroom.google.com/",
     "img": "./imagens/classroom.png",
-    "alt": "Classroom"
+    "alt": "Google Sala de Aula"
   },
   {
     "href": "https://maps.google.com/",
     "img": "./imagens/maps.png",
-    "alt": "Maps"
+    "alt": "Google Maps"
   },
   {
     "href": "https://photos.google.com",
     "img": "./imagens/photosGoogle.png",
-    "alt": "Google fotos"
+    "alt": "Google Fotos"
   },
   {
-    "href": "https://youtube.com/",
-    "img": "./imagens/youtube.jpeg",
-    "alt": "Youtube"
+    "href": "https://translate.google.com/",
+    "img": "./imagens/googletranslator.png",
+    "alt": "Google Tradutor"
   },
   {
-    "href": "https://music.youtube.com/",
-    "img": "./imagens/ytMusic.jpeg",
-    "alt": "Youtube Music"
+    "href": "https://docs.google.com/document/",
+    "img": "./imagens/docs.png",
+    "alt": "Google Documentos"
   },
   {
-    "href": "https://keep.google.com/u/0/",
-    "img": "./imagens/keep.jpeg",
-    "alt": "Google Keep"
+    "href": "https://docs.google.com/spreadsheets/",
+    "img": "./imagens/sheets.png",
+    "alt": "Google Planilhas"
   },
   {
-    "href": "https://sistemas2.utfpr.edu.br/",
-    "img": "./imagens/utfprAcademico.png",
-    "alt": "Sistema Acadêmico UTFPR"
-  },
-  {
-    "href": "https://www.google.com/search?q=previsao+do+tempo+campo+mourao&oq=previsao+do+tempo+campo+mourao&gs_l=psy-ab.3..0l2j0i22i30k1l3.16242.22304.0.22632.13.13.0.0.0.0.107.1282.7j6.13.0....0...1.1.64.psy-ab..0.13.1277....0.-l0_OSgE3sg",
+    "href": "https://www.google.com/search?q=previsao+do+tempo",
     "img": "./imagens/previsaoDoTempo.jpeg",
-    "alt": "Previsão do tempo"
-  },
-    {
-    "href": "https://www.simepar.br/simepar/forecast_by_counties/4104303",
-    "img": "./imagens/simepar.png",
-    "alt": "Simepar"
+    "alt": "Previsão do Tempo"
   },
   {
-    "href": "http://www.bb.com.br/",
-    "img": "./imagens/bb.png",
-    "alt": "Banco do Brasil"
-  },
-  {
-    "href": "https://www.gov.br/servidor/pt-br/",
+    "href": "https://www.gov.br/",
     "img": "./imagens/govbr.png",
-    "alt": "Sigepe"
-  },
-  {
-    "href": "https://www.mercadolivre.com.br/",
-    "img": "./imagens/mercadolivre.png",
-    "alt": "Mercado Livre"
+    "alt": "Gov.br"
   }
 ]

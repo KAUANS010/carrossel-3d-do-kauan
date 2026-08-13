@@ -1,0 +1,52 @@
+[
+  {
+    "href": "https://moodle.utfpr.edu.br/my/courses.php",
+    "img": "./imagens/moodle.png",
+    "alt": "Moodle UTFPR"
+  },
+  {
+    "href": "https://sistemas2.utfpr.edu.br/dpls/sistema/aluno03/mpmenu.inicio",
+    "img": "./imagens/utfprAcademico.png",
+    "alt": "Portal do Aluno UTFPR"
+  },
+  {
+    "href": "https://atlaensino.com/ProfileCounty/main/inicio",
+    "img": "./imagens/atlaEnsino.png",
+    "alt": "Atla Ensino"
+  },
+  {
+    "href": "https://org.atla.email/webmail/?_task=mail&_mbox=INBOX",
+    "img": "./imagens/atlaEmail.png",
+    "alt": "Email Atla"
+  },
+  {
+    "href": "https://itc.atla.pro/ghost/#/site",
+    "img": "./imagens/atlaGhost.png",
+    "alt": "Ghost Admin Atla"
+  },
+  {
+    "href": "https://git.atla.pro/",
+    "img": "./imagens/gitlab.png",
+    "alt": "GitLab Atla"
+  },
+  {
+    "href": "https://app.empresas.atla.pro/home-profilecollaborator",
+    "img": "./imagens/atlaEmpresa.png",
+    "alt": "Atla Empresa"
+  },
+  {
+    "href": "https://trello.com/u/kauanschulhan/boards",
+    "img": "./imagens/trello.png",
+    "alt": "Trello (Atla)"
+  },
+  {
+    "href": "https://formbricks-hykdfv3ghiq9flhu8rg1envy.sv3.cloud.atla.pro/environments/cmqfixw0l0009o201jp3nv2zs/surveys",
+    "img": "./imagens/formbricks.png",
+    "alt": "Formbricks (Atla)"
+  },
+  {
+    "href": "https://rocketchat.sv7.cloud.atla.pro/group/expo",
+    "img": "./imagens/expo.png",
+    "alt": "Expo (Atla)"
+  }
+]

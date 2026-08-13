@@ -1,0 +1,27 @@
+[
+  {
+    "href": "https://chatgpt.com/",
+    "img": "./imagens/chatgpt.jpeg",
+    "alt": "ChatGPT"
+  },
+  {
+    "href": "https://gemini.google.com/app",
+    "img": "./imagens/gemini.jpeg",
+    "alt": "Google Gemini"
+  },
+  {
+    "href": "https://claude.ai",
+    "img": "./imagens/claudeia.png",
+    "alt": "Claude IA"
+  },
+  {
+    "href": "https://chat.deepseek.com/",
+    "img": "./imagens/deepseek.png",
+    "alt": "DeepSeek"
+  },
+  {
+    "href": "https://manus.im/",
+    "img": "./imagens/manus.png",
+    "alt": "Manus IA"
+  }
+]
